@@ -1,4 +1,4 @@
-name: Pages Build Deployment
+name: Build and Deploy Pages
 
 on:
   # Runs on pushes targeting the default branch
