@@ -1,0 +1,13 @@
+{
+  "name": "homepage",
+  "source": "src/index.html",
+  "scripts": {
+    "build:css": "tailwindcss -i src/css/input.css -o src/css/output.css --minify",
+    "build:parcel": "parcel build",
+    "build": "rm -rf dist && pnpm run build:css && pnpm run build:parcel"
+  },
+	"devDependencies": {
+		"parcel": "^2.12.0",
+		"tailwindcss": "^3.4.4"
+	}
+}

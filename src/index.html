@@ -5,19 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-    .bg-custom {
-      background-image: url("assets/background.jpg");
-    }
-    </style>
+    <link href="./css/output.css" rel="stylesheet">
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const greetings = [
+          "Hola",        // Spanish
+          "Bonjour",     // French
+          "Hallo",       // German
+          "Ciao",        // Italian
+          "Olá",         // Portuguese
+          "Привет",      // Russian
+          "こんにちは",  // Japanese
+          "你好",        // Chinese
+          "안녕하세요"   // Korean
+        ];
+
+        let index = 0;
+
+        function changeGreeting() {
+          const msgElement = document.getElementById("rand-msg");
+          msgElement.classList.remove('opacity-100');
+          msgElement.classList.add('opacity-0');
+
+          setTimeout(() => {
+            msgElement.textContent = greetings[index];
+            msgElement.classList.remove('opacity-0');
+            msgElement.classList.add('opacity-100');
+            index = (index + 1) % greetings.length;
+          }, 1000); // Wait for the fade-out transition to complete
+        }
+
+        // Change greeting every 3 seconds
+        setInterval(changeGreeting, 3000);
+      });
+    </script>
   </head>
 
   <body class="bg-custom bg-cover bg-center bg-fixed bg-green-100 flex flex-col items-center justify-center min-h-screen px-4 md:px-6">
     <div class="max-w-lg w-full space-y-6 p-8 rounded-xl bg-green-300 bg-opacity-50 backdrop-blur-2xl">
       <div class="flex flex-col items-center">
-        <img draggable="false" src="assets/bamboo-logo.png" width="96" height="96" alt="logo">
-        <h1 class="text-2xl font-bold text-green-950 mt-4">perpetualpanda</h1>
+        <img draggable="false" src="./img/bamboo-logo.png" width="96" height="96" alt="logo">
+        <h1 id="rand-msg" class="text-2xl font-bold text-green-950 mt-4 transition-opacity duration-1000">Hello</h1>
         <p class="text-green-900">welcome to the bamboo grove</p>
       </div>
       <div class="grid gap-4">
